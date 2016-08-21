@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kowsoft.pokemongorater">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- For showing PokéCaptor overlay button -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- For uploading feedback data -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".StarterActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".PokemonAnalysisActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".OverlayService" />
+        <activity
+            android:name=".OverlayService$PokemonAnalysisWrapperActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <service android:name=".ScreenCaptureService" />
+        <activity
+            android:name=".ScreenCaptureService$AcquireScreenshotPermissionsActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    </application>
+
+</manifest>
